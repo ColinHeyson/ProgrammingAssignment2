@@ -1,32 +1,28 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Purpose: This pair of functions sets prepares a function to be solved
+## and cached in memory, and then does so once called
 
-## Write a short comment describing this function
+## Here we create a list which stores the value and eventually the inverse
+## of our matrix once cached
 
 makeCacheMatrix <- function(x = matrix()) {
     m <- NULL
-#     set <- function (y) {
-#         x <<- y
-#         m <<- NULL(
-#     }
     get <- function () x
     inverse.matrix <- function(solve) m <<- solve
     get.inverse <- function() m
-    list(#set = set,
-         get = get,
+    list(get = get,
          inverse.matrix = inverse.matrix,
          get.inverse = get.inverse
          )
 }
 
 
-## Write a short comment describing this function
+## Here we preform the inverse calcuation and store in memory.
+## If the inverse already exists in the cache, just return it.
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+    ## Returns a matrix that is the inverse of 'x'
     m <- x$get.inverse()
     if (is.null(m)) {
-#         fun <- x$inverse.matrix()
         data <- x$get()
         m <- solve(data, ...)
         x$inverse.matrix(m)
